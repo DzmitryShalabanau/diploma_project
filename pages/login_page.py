@@ -1,23 +1,9 @@
 from data import *
 from helpers import BasePage
+from locators import LoginLocators
 
 
-class LoginPage(BasePage):
-
-    LOGIN_BUTTON = '//a[@class="h-drop h-user"]'
-    USER_EMAIL = '//input[@name="login"]'
-    PASSWORD = '//input[@type="password"]'
-    LOGIN = '//form[@action="/"]//div[@class="form-group"]//button[@type="submit"]//span[text()="Войти"]'
-    ACCOUNT_LOCATOR = '//div[@class="h-drop h-user hovered"]'
-    CABINET_LOCATOR = '//div[text()="Личный кабинет"]'
-    LOGIN_SUCCESS = '//*[text()="Hanna Shalabanava"]'
-    LOGOUT_BUTTON = '//li[@class="account-menu__item"]//a[@href="/cabinet/logout"]'
-    USER_NOT_FOUND = '//span[text()="Пользователь не найден."]'
-    INVALID_PASSWORD = '//span[text()="Пароль неверный"]'
-    RESTORE_PASSWORD = '//*[text()="Забыли пароль?"]'
-    EMAIL_FOR_RESTORE = '//div[@class="f-group"]//input[@placeholder="Ваш email или номер телефона"]'
-    GET_RESTORE_CODE_BUTTON = '//button[@class="btn btn--lg btn--block"]//span[text()="Получить код"]'
-    SEND_RESTORE_CODE_BUTTON = '//span[text()="Отправить код"]'
+class LoginPage(BasePage, LoginLocators):
 
     def __init__(self, driver):
         super().__init__(driver)

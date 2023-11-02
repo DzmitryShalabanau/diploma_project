@@ -1,40 +1,9 @@
-from helpers import BasePage
 from data import *
+from helpers import BasePage
+from locators import CabinetLocators
 
 
-class PersonalCabinetPage(BasePage):
-    PERSONAL_DATA = '//li[@class="account-menu__item"]//a[text()="Личные данные"]'
-    USER_SURNAME = '//div[2]/div[2]/form/div[1]/div/div[1]/input'
-    USER_NAME = '//form/div[2]/div/div[1]/input'
-    USER_LASTNAME = '//*[@id="app"]/main/div[2]/div/div[2]/div[2]/form/div[3]/div/div[1]/input'
-    USER_BIRTHDAY = '//input[@placeholder="дд.мм.гггг"]'
-    FEMALE_GENDER = '//*[@id="app"]/main/div[2]/div/div[2]/div[2]/form/div[4]/div/div[2]/div/div[1]/label/div[1]'
-    SAVE_PERSONAL_BUTTON = '//div[@class="account-submit"]//button[@type="submit"]'
-    ACCOUNT_LOCATOR = '//div[@class="h-drop h-user hovered"]'
-    SAVED_DATA = '//p[text()="Hanna Shalabanava"]'
-    MY_SUBSCRIBES = '//li[@class="account-menu__item"]//a[@href="/cabinet/subscribe"]'
-    REGULAR_MAIING = '//div[@class="form-section-sm"]//div[@class="inp-box"]//label[@class="inp-box__label"]//div[@class="inp-box__view"]'
-    POLICY_AGREE = '//div[@class="is-policy-agree-checkbox"]//div[@class="inp-box"]//label[@class="inp-box__label"]//div[@class="inp-box__view"]'
-    SAVE_SUBSCRIBES = '//button[@class="btn"]//span[text()="Сохранить"]'
-    SUBSCRIBES_SAVED_CHANGES = '//*[@id="app"]/div[21]/div/div/p'
-    SUB_OK_BUTTON = '//a[text()="OK"]'
-    MY_SHOP = '//li[@class="account-menu__item"]//a[text()="Мой магазин"]'
-    FAVORITE_SHOP_TO_CHOOSE = '//div[2]/div[15]/div[3]/button'
-    FAVORITE_SHOP = '//h4[@class="product-availability-title"]//p[@class="si-favotite ic-heart"]'
-    DELETE_FAVORITE_SHOP_BUTTON = '//a[text()="Удалить"]'
-    DELIVERY_ADDRESS = '//li[@class="account-menu__item"]//a[@href="/cabinet/delivery"]'
-    ADD_ADDRESS_FORM = '//a[text()="Добавить адрес"]'
-    CITY_TO_FILL = '//input[@placeholder="Поиск населенного пункта"]'
-    SELECT_CITY = '//div[1]/div/div/div/div[7]'
-    STREET_TO_FILL = '//input[@data-v-124a8334=""]'
-    SELECT_STREET = '//div[@data-v-124a8334=""]'
-    HOUSE_TO_FILL = '//form/div[1]/div[2]/div/div[1]/div/div[1]/input'
-    APARTMENT_TO_FILL = '//div[2]/div/div[2]/div/div[1]/input'
-    SET_TO_DEFAULT_ADDRESS_CHECKBOX = '//div[3]/div/div[2]/form/div[2]/div/label/div[1]'
-    SAVE_ADDRESS_BUTTON = '//button[@class="btn"]//span[text()="Сохранить"]'
-    ADDRESS_IS_PRESENT = '//div[@class="address-item"]'
-    DELETE_ADDRESS = '//div/div[2]/button[2]'
-    CONFIRM_DELETE = '//a[text()="Да, удалить"]'
+class PersonalCabinetPage(BasePage, CabinetLocators):
 
     def open(self):
         self.driver.get(CABINET_PAGE_URL)

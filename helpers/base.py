@@ -99,6 +99,12 @@ class BasePage:
         element.clear()
         element.send_keys(text)
 
+    def hard_fill(self, locator, text):
+        element = self.driver.find_element(By.XPATH, locator)
+        self.driver.execute_script("arguments[0].click();", element)
+        element.clear()
+        element.send_keys(text)
+
     def clear(self, locator):
         element = self.wait_for_visible(locator)
         element.clear()

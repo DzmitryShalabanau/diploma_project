@@ -1,27 +1,9 @@
 from data import *
 from helpers import BasePage
+from locators import CatalogueLocators
 
 
-class CataloguePage(BasePage):
-
-    LOWER_PRICE = '//*[@id="filter-price"]/div/div[1]/div/div[1]/input'
-    HIGHER_PRICE = '//*[@id="filter-price"]/div/div[1]/div/div[2]/input'
-    PRICE_RANGES = '//*[text()="Цена: от 500 до 1000 руб."]'
-    INSTALLMENT_PAYMENT = '//div[4]/div/div/label/div[1]'
-    INSTALLMENT_PAYMENT_SIGN = '//span[text()="Товары в рассрочку"]'
-    DISCOUNT_GOODS = '//div[5]/div/div/label/div[1]'
-    DISCOUNT_GOODS_SIGN = '//span[text()="Товары с уценкой"]'
-    ACTIONS_FILTER = '//div[@data-target="#filter-actions"]'
-    ALL_ACTIONS = '//*[@id="filter-actions"]/div/div[2]/div/label/div[1]'
-    ALL_ACTIONS_SIGN = '//span[text()="Акции: ВСЕ акционные товары"]'
-    XIAOMI_BRAND_CHECKBOX = '//*[@id="filter-692695"]/div/div[2]/div/label/div[1]'
-    BRAND_SELECTED_SIGN = '//span[text()="Бренд: XIAOMI"]'
-    SHOW_ALL_YEARS = '//*[@id="filter-726460"]/div/a/span[1]'
-    YEAR_2023 = '//*[@id="filter-more-726460"]/div[2]/div/label/div[1]'
-    YEAR_2023_SIGN = '//span[text()="Год выхода модели: 2023"]'
-    SORT_DROPDOWN = '//div[2]/div/div/div[2]/div/button'
-    VALUE_RATING = '//input[@value="rating"]'
-    SORT_BY_RATING = '//span[text()="По рейтингу"]'
+class CataloguePage(BasePage, CatalogueLocators):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -90,6 +72,15 @@ class CataloguePage(BasePage):
     def assert_if_sort_by_rating_is_selected(self):
         self.wait_for_visible(self.SORT_BY_RATING)
         self.assert_text_in_element(self.SORT_BY_RATING, 'По рейтингу')
+
+    def click_on_city_list(self):
+        self.click_on(self.CATALOGUE_CITY_LIST)
+
+    def select_city_of_a_client(self):
+        self.click_on(self.CITY_OF_A_CLIENT_TO_SELECT)
+
+    def assert_if_actual_city_is_selected(self):
+        self.assert_element_is_present(self.FINAL_ACTUAL_CITY)
 
 
 

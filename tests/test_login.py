@@ -1,4 +1,4 @@
-from data import TEST_USER
+from data import *
 from pages import LoginPage
 
 
@@ -50,10 +50,3 @@ def test_restore_login_password(driver):
     login.fill_email_for_restore(TEST_USER['email'])
     login.get_restore_code()
     login.assert_send_code_button_is_present()
-
-
-
-
-
-
-

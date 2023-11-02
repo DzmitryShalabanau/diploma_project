@@ -17,3 +17,12 @@ FACEBOOK_PAGE_URL = 'https://www.facebook.com/5ElementBelarus'
 VK_PAGE_URL = 'https://vk.com/5elementbelarus'
 TELEGRAM_PAGE_URL = 'https://t.me/fivelementbelarus'
 OK_PAGE_URL = 'https://ok.ru/elementbelarus'
+
+CART_PAGE_URL = f'{DOMAIN}cart'
+
+ITEM_1_URL = f'{DOMAIN}products/784765-smartfon-xiaomi-redmi-10c-4gb-128gb-graphite-gray-eu'
+
+
+GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.ntg.master_element5&hl=ru'
+APP_STORE_URL = 'https://apps.apple.com/by/app/%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%B0/id1318465460'
+APP_GALLERY_URL = 'https://appgallery.huawei.com/app/C101902737'

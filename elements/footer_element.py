@@ -1,23 +1,9 @@
 from helpers import BasePage
+from locators import FooterLocators
+from data import *
 
 
-class FooterElement(BasePage):
-    YOUTUBE_LOCATOR = '//a[@href="https://www.youtube.com/user/5elementBelarus"]'
-    INSTAGRAM_LOCATOR = '//a[@aria-label="instagram"]'
-    FACEBOOK_LOCATOR = '//a[@aria-label="facebook"]'
-    VK_LOCATOR = '//a[@aria-label="vk"]'
-    TELEGRAM_LOCATOR = '//a[@aria-label="telegram"]'
-    OK_LOCATOR = '//a[@aria-label="ok"]'
-    ABOUT_US_LOCATOR = '//a[text()="О нас"]'
-    STORE_ADDRESSES_LOCATOR = '//a[text()="Адреса магазинов"]'
-    NEWS_LOCATOR = '//a[text()="Новости"]'
-    REVIEWS_LOCATOR = '//a[text()="Статьи и обзоры"]'
-    VACANCY_LOCATOR = '//a[text()="Вакансии"]'
-    CONTACTS_PAGE = '//a[text()="Контакты"]'
-    FOOTER_EMAIL = '//input[@placeholder="Электронная почта"]'
-    FOOTER_POLICY_AGREE = '//label[@data-v-88f64d10=""]//div[@class="inp-box__view"]'
-    FOOTER_SUBSCRIBE_NEWSLETTER_BUTTON = '//span[text()="Подписаться"]'
-    FOOTER_SUBSCRIBE_NEWSLETTER_SUCCESS = '//div[text()="Благодарим Вас"]'
+class FooterElement(BasePage, FooterLocators):
 
     def open(self):
         self.driver.get('https://5element.by/')
@@ -41,6 +27,15 @@ class FooterElement(BasePage):
         self.click_on(self.OK_LOCATOR)
 
     def switch_to_social_media_window(self):
+        self.switch_to_new_window()
+
+    def switch_to_google_play_window(self):
+        self.switch_to_new_window()
+
+    def switch_to_app_store_window(self):
+        self.switch_to_new_window()
+
+    def switch_to_app_gallery_window(self):
         self.switch_to_new_window()
 
     def click_on_about_us_page(self):
@@ -73,4 +68,35 @@ class FooterElement(BasePage):
     def assert_if_footer_subscription_is_done(self):
         self.assert_element_is_displayed(self.FOOTER_SUBSCRIBE_NEWSLETTER_SUCCESS, True)
 
+    def click_on_footer_contacts(self):
+        self.click_on(self.CONTACTS_FOOTER)
 
+    def assert_mts_number(self):
+        self.assert_text_in_element(self.MTS_NUMBER, CONTACTS['mts'])
+
+    def assert_a1_number(self):
+        self.assert_text_in_element(self.A1_NUMBER, CONTACTS['a1'])
+
+    def assert_life_number(self):
+        self.assert_text_in_element(self.LIFE_NUMBER, CONTACTS['life'])
+
+    def assert_city_number(self):
+        self.assert_text_in_element(self.CITY_NUMBER, CONTACTS['city_number'])
+
+    def assert_email_footer_contact(self):
+        self.assert_text_in_element(self.EMAIL_FOOTER_CONTACT, CONTACTS['email'])
+
+    def assert_footer_contacts(self):
+        self.assert_mts_number()
+        self.assert_a1_number()
+        self.assert_life_number()
+        self.assert_city_number()
+
+    def click_on_google_play(self):
+        self.click_on(self.GOOGLE_PLAY)
+
+    def click_on_app_store(self):
+        self.click_on(self.APP_STORE)
+
+    def click_on_app_gallery(self):
+        self.click_on(self.APP_GALLERY)

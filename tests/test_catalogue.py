@@ -51,3 +51,10 @@ def test_sort_goods_by_rating(driver):
     catalog.select_goods_by_rating()
     catalog.assert_if_sort_by_rating_is_selected()
 
+
+def test_select_city_of_aclient(driver):
+    catalog = CataloguePage(driver)
+    catalog.open()
+    catalog.click_on_city_list()
+    catalog.select_city_of_a_client()
+    catalog.assert_if_actual_city_is_selected()

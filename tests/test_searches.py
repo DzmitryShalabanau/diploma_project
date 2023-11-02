@@ -17,7 +17,3 @@ def test_shops_map(driver):
     header.click_on_shop_list()
     shop_list.click_on_shop_map()
     shop_list.assert_shop_map()
-
-
-
-

@@ -1,21 +1,12 @@
 from helpers import BasePage
+from locators import HeaderLocators
+from data import *
 
 
-class HeaderElement(BasePage):
-    LOGO = '//img[@src="/resources/images/logo_.svg"]'
-    DISCOUNT = '//span[@class="h-discounts__text"]'
-    CURRENT_CITY = '//div[text()="Минск"]'
-    NEW_CITY = '//div[text()="Брест"]'
-    FINAL_CITY = '//div[text()="Брест"]'
-    SHOPS = '//a[text()="Магазины"]'
-    SEARCH_FORM = '//form[@class="h-search__form"]'
-    SEARCH_FORM_FOR_FILL = '//input[@maxlength="90"]'
-    SEARCH_BUTTON = '//div[1]/form/div/button[2]'
-    SEARCH_RESULT = '//div[text()="Результаты поиска «notebook»"]'
-    SMARTPHONES_CATALOGUE = '//a[@href="/catalog/377-smartfony"]'
+class HeaderElement(BasePage, HeaderLocators):
 
     def open(self):
-        self.driver.get('https://5element.by/')
+        self.driver.get(DOMAIN)
 
     def assert_fifth_element_logo(self):
         self.assert_element_is_present(self.LOGO)
@@ -50,6 +41,45 @@ class HeaderElement(BasePage):
 
     def click_on_smartphones(self):
         self.click_on(self.SMARTPHONES_CATALOGUE)
+
+    def click_on_compare_section(self):
+        self.click_on(self.COMPARE)
+
+    def assert_compare_section_is_empty(self):
+        self.assert_text_in_element(self.EMPTY_COMPARE, 'Пока не добавлено ни одного товара для сравнения')
+
+    def click_on_favorites_section(self):
+        self.click_on(self.FAVORITES)
+
+    def assert_favorites_section_is_empty(self):
+        self.assert_text_in_element(self.EMPTY_FAVORITES, 'У нас столько замечательных товаров, а в Избранном у Вас – пусто :(')
+
+    def click_on_header_contacts(self):
+        self.click_on(self.CONTACTS)
+
+    def assert_mts_number(self):
+        self.assert_text_in_element(self.MTS_NUMBER, CONTACTS['mts'])
+
+    def assert_a1_number(self):
+        self.assert_text_in_element(self.A1_NUMBER, CONTACTS['a1'])
+
+    def assert_life_number(self):
+        self.assert_text_in_element(self.LIFE_NUMBER, CONTACTS['life'])
+
+    def assert_city_number(self):
+        self.assert_text_in_element(self.CITY_NUMBER, CONTACTS['city_number'])
+
+    def assert_email(self):
+        self.assert_text_in_element(self.EMAIL, CONTACTS['email'])
+
+    def assert_contacts(self):
+        self.assert_mts_number()
+        self.assert_a1_number()
+        self.assert_life_number()
+        self.assert_city_number()
+        self.assert_email()
+
+
 
 
 

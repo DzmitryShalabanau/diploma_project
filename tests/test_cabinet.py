@@ -76,10 +76,3 @@ def test_delete_delivery_address(driver, login):
     cabinet.delete_address()
     cabinet.confirm_delete_address()
     cabinet.assert_if_address_is_deleted()
-
-
-
-
-
-
-
