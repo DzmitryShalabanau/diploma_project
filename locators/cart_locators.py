@@ -9,8 +9,6 @@ class CartLocators:
     ADD_SERVICE_TRIGGER = '//a[text()="Добавить сервис"]'
     ADD_SERVICE_BUTTON = '//span[text()="Добавить"]'
     ADDED_SERVICE = '//div[2]/div[2]/div/div[2]/a[1]'
-    NUMBER_BUTTON = '//*[@id="card-product-cart-6122067"]/div[1]/div[3]/div/div/input'
-    NUMBER_OF_ITEMS = '//span[text()="(2)"]'
     PROMOTIONAL_CODE_FIELD = '//div[2]/div/div/form/input'
     CODE_APPLY_BUTTON = '//div[2]/div/div/form/button'
     CODE_NOT_FOUND = '//div[@class="form-caption form-caption--warning ic-info"]'

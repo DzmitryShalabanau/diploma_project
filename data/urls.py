@@ -1,6 +1,6 @@
 DOMAIN = 'https://5element.by/'
 
-SMARTPHONES_CATALOGUE_URL = f'{DOMAIN}catalog/377-smartfony'
+SMARTPHONES_CATALOG_URL = f'{DOMAIN}catalog/377-smartfony'
 ACTIONS_PAGE_URL = f'{DOMAIN}actions'
 CABINET_PAGE_URL = f'{DOMAIN}cabinet'
 SHOP_LIST_PAGE_URL = f'{DOMAIN}shops'

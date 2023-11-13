@@ -1,8 +1,11 @@
+import allure
+
 from data import *
 from pages import LoginPage
 
 
-# 1
+@allure.title('Login as user')
+@allure.feature('Login as TEST_USER with email')
 def test_login(driver):
     login = LoginPage(driver)
     login.open()
@@ -14,7 +17,8 @@ def test_login(driver):
     login.assert_login_success()
 
 
-# 2
+@allure.title('Logout from personal cabinet')
+@allure.feature('Logout as TEST_USER from personal cabinet of 5element')
 def test_logout(driver):
     login = LoginPage(driver)
     login.login(TEST_USER)
@@ -22,6 +26,8 @@ def test_logout(driver):
     login.assert_logout_success()
 
 
+@allure.title('Login as user with invalid email')
+@allure.feature('Login TEST_USER with invalid email')
 def test_login_with_invalid_email(driver):
     login = LoginPage(driver)
     login.open()
@@ -32,6 +38,8 @@ def test_login_with_invalid_email(driver):
     login.assert_invalid_email_entered()
 
 
+@allure.title('Login as user with invalid password')
+@allure.feature('Login TEST_USER with invalid password')
 def test_login_with_invalid_password(driver):
     login = LoginPage(driver)
     login.open()
@@ -42,6 +50,8 @@ def test_login_with_invalid_password(driver):
     login.assert_invalid_password_entered()
 
 
+@allure.title('Restore login password')
+@allure.feature('Restore login password and send it to email of a user')
 def test_restore_login_password(driver):
     login = LoginPage(driver)
     login.open()

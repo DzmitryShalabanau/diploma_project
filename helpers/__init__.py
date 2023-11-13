@@ -1,2 +1,1 @@
-from helpers.base import BasePage
-
+from helpers.base_pages import BasePage
