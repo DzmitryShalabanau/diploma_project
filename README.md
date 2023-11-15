@@ -5,7 +5,7 @@
 This is final project on TeachMeSkills QA automation on Python courses for getting
 diploma.This project contains UI tests of login, personal cabinet, catalog, cart, comparison page, footer and header
 elements. Project can be run with two browsers Chrome and Edge. The design pattern of
-this project is Page Object Model. Each page is represented separately
+this project is Page Object Model. 
 and contains the following:
 
 * data with urls and personal users and shop information
@@ -17,7 +17,6 @@ and contains the following:
 * tests of single pages
 * README file with information about the project
 * Makefile for running tests
-* Dockerfile - to create container images
 * folders for allure report results
 * Conftest - file with project settings
 (pytest fixtures for driver and single tests )

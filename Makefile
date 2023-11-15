@@ -13,3 +13,5 @@ serve_results_chrome:
 serve_results_edge:
 	allure serve allure_results_edge
 
+test_login_for_diploma:
+	pytest test_login.py --reruns 5 --headless=False --alluredir allure_results_chrome
