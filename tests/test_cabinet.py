@@ -1,8 +1,11 @@
+import allure
+
 from data import *
 from pages import PersonalCabinetPage
 
 
-# 3
+@allure.title('Fill user data')
+@allure.feature('Fill TEST_USER_DATA')
 def test_fill_personal_data(driver, login):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_personal_data()
@@ -13,17 +16,20 @@ def test_fill_personal_data(driver, login):
     cabinet.assert_saved_personal_data(TEST_USER_DATA)
 
 
-# 4
+@allure.title('Start subscription to news')
+@allure.feature('Start subscription to 5element news')
 def test_subscribe_to_email_newsletter(driver, login, delete_subscribes):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_my_subscribes()
     cabinet.check_regular_mailing()
     cabinet.check_policy_agree()
     cabinet.save_subscribes()
-    cabinet.assert_subscribes_saved_changes()
+    cabinet.click_on_sub_ok_button()
+    cabinet.assert_subscribes_done()
 
 
-# 5
+@allure.title('Stop subscription to news')
+@allure.feature('Stop subscription to 5element news')
 def test_unsubscribe_to_email_newsletter(driver, login):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_my_subscribes()
@@ -33,10 +39,11 @@ def test_unsubscribe_to_email_newsletter(driver, login):
     cabinet.click_on_sub_ok_button()
     cabinet.uncheck_regular_mailing()
     cabinet.save_subscribes()
-    cabinet.assert_subscribes_saved_changes()
+    cabinet.assert_subscribes_canceled()
 
 
-# 6
+@allure.title('Select favorite shop from list')
+@allure.feature('Select favorite 5element shop from list')
 def test_select_favorite_shop(driver, login, delete_shop):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_my_shop_button()
@@ -44,7 +51,7 @@ def test_select_favorite_shop(driver, login, delete_shop):
     cabinet.assert_if_favorite_shop_is_selected()
 
 
-# 7
+@allure.title('Delete favorite shop from list')
 def test_delete_favorite_shop(driver, login):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_my_shop_button()
@@ -53,7 +60,7 @@ def test_delete_favorite_shop(driver, login):
     cabinet.assert_if_favorite_shop_is_deleted()
 
 
-# 8
+@allure.title('Fill delivery address')
 def test_add_delivery_address(driver, login, delete_address):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_delivery_address()
@@ -64,7 +71,7 @@ def test_add_delivery_address(driver, login, delete_address):
     cabinet.assert_added_address()
 
 
-# 9
+@allure.title('Delete delivery address')
 def test_delete_delivery_address(driver, login):
     cabinet = PersonalCabinetPage(driver)
     cabinet.click_on_delivery_address()

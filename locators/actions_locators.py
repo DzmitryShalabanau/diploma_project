@@ -1,3 +1,3 @@
-class ActionsLocators():
+class ActionsLocators:
 
-    DISCOUNT_LOCATOR = '//*[@id="app"]/main/div[2]/div/div/div[1]/div[1]'
+    DISCOUNT_LOCATOR = '//div[@class="section-heading__title"]'

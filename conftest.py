@@ -1,22 +1,25 @@
 import pytest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOption
-from selenium.webdriver.firefox.options import Options as FirefoxOption
 from selenium.webdriver.edge.options import Options as EdgeOption
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.chrome.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
 
+
 from data import TEST_USER
-from pages import LoginPage, PersonalCabinetPage
+from elements import HeaderElement
+from pages import LoginPage, PersonalCabinetPage, ComparisonPage
 
 
 def pytest_addoption(parser):
+    """
+    Adds such options as headless mode of browser and choosing browser type
+    """
     parser.addoption('--headless',
-                     default='False',
+                     default='True',
                      help='headless options: "yes" or "no"')
     parser.addoption('--b',
                      default='chrome',
@@ -24,6 +27,9 @@ def pytest_addoption(parser):
 
 
 def create_chrome(headless=True):
+    """
+    Create Google Chrome browser
+    """
     chrome_option = ChromeOption()
     if headless == 'True':
         chrome_option.add_argument('--headless')
@@ -32,15 +38,10 @@ def create_chrome(headless=True):
     return driver
 
 
-def create_firefox(headless=True):
-    ff_option = FirefoxOption()
-    if headless == 'True':
-        ff_option.add_argument('--headless')
-    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=ff_option)
-    return driver
-
-
 def create_edge(headless=True):
+    """
+     Create Microsoft Edge browser
+    """
     edge_option = EdgeOption()
     if headless == 'True':
         edge_option.add_argument('--headless')
@@ -51,6 +52,9 @@ def create_edge(headless=True):
 
 @pytest.fixture(autouse=True)
 def driver(request):
+    """
+    Create browser with chosen options
+    """
     driver = None
     browser = request.config.getoption('--b')
     headless = request.config.getoption('--headless')
@@ -58,8 +62,6 @@ def driver(request):
     print(headless)
     if browser == 'chrome':
         driver = create_chrome(headless)
-    if browser == 'ff':
-        driver = create_firefox(headless)
     if browser == 'edge':
         driver = create_edge(headless)
 
@@ -72,18 +74,27 @@ def driver(request):
 
 @pytest.fixture(scope='function')
 def open_main_page(request):
+    """
+    Opens www.5element.by
+    """
     login = LoginPage(request.node.funcargs['driver'])
     login.open()
 
 
 @pytest.fixture(autouse=False)
 def login(request):
+    """
+    Logins to www.5element.by as user
+    """
     login = LoginPage(request.node.funcargs['driver'])
     login.login(TEST_USER)
 
 
 @pytest.fixture(scope='function')
 def delete_shop(driver):
+    """
+    Delete favorite shop from personal cabinet
+    """
     print('Adding favorite shop')
     yield
     cabinet = PersonalCabinetPage(driver)
@@ -92,6 +103,9 @@ def delete_shop(driver):
 
 @pytest.fixture(scope='function')
 def delete_address(driver):
+    """
+    Delete address from personal cabinet
+    """
     print('Adding new address')
     yield
     cabinet = PersonalCabinetPage(driver)
@@ -102,14 +116,41 @@ def delete_address(driver):
 
 @pytest.fixture(scope='function')
 def delete_subscribes(driver):
+    """
+    Delete subscribes from personal cabinet
+    """
     print('Adding new subscribes')
     yield
     cabinet = PersonalCabinetPage(driver)
     cabinet.uncheck_regular_mailing()
     cabinet.save_subscribes()
+    cabinet.click_on_sub_ok_button()
 
 
+@pytest.fixture(scope='function')
+def add_item_to_comparison(driver):
+    """
+    Method that adds item to comparison
+    """
+    header = HeaderElement(driver)
+    compare = ComparisonPage(driver)
+    header.click_on_search_form()
+    header.search_for_item_to_compare()
+    compare.add_item_to_comparison()
+    compare.move_to_compare_section()
 
 
-
-
+@pytest.fixture(scope='function')
+def add_items_to_comparison(driver):
+    """
+    Method that adds items to comparison
+    """
+    header = HeaderElement(driver)
+    compare = ComparisonPage(driver)
+    header.click_on_search_form()
+    header.search_for_item_to_compare()
+    compare.add_item_to_comparison()
+    compare.move_to_compare_section()
+    compare.click_on_add_item_button()
+    compare.add_second_item_to_comparison()
+    compare.move_to_compare_section()

@@ -2,4 +2,4 @@ TEST_USER_DATA = {'surname': 'Shalabanava', 'name': 'Hanna', 'lastname': 'VasilL
                   'saved_data': 'Hanna Shalabanava'}
 TEST_USER_ADDRESS = {'city': 'Минск', 'street': 'Каменногорская', 'house': '97', 'apartment': '122'}
 
-USER_ITEMS = {'item_1': '236508'}
+USER_ITEMS = {'item_1': '236508', 'item_2': '234922', 'item_3': '227972'}
