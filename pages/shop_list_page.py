@@ -1,13 +1,12 @@
-from helpers import BasePage
 from data import *
+from helpers import BasePage
+from locators import ShopListLocators
 
 
-class ShopListPage(BasePage):
-    SHOP_MAP = "//button[contains(text(),'Карта')]"
-    YANDEX_MAP = '//*[@id="app"]/main/div[2]/div/div/div[3]'
+class ShopListPage(BasePage, ShopListLocators):
 
     def open(self):
-        self.driver.get('https://5element.by/shops')
+        self.driver.get(SHOP_LIST_PAGE_URL)
 
     def click_on_shop_map(self):
         self.click_on(self.SHOP_MAP)

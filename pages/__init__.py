@@ -4,3 +4,4 @@ from pages.shop_list_page import ShopListPage
 from pages.actions_page import ActionsPage
 from pages.login_page import LoginPage
 from pages.catalog_page import CataloguePage
+from pages.cart_page import CartPage

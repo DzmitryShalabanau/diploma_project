@@ -1,9 +1,9 @@
 from data import *
 from helpers import BasePage
+from locators import ActionsLocators
 
 
-class ActionsPage(BasePage):
-    DISCOUNT_LOCATOR = '//*[@id="app"]/main/div[2]/div/div/div[1]/div[1]'
+class ActionsPage(BasePage, ActionsLocators):
 
     def open(self):
         self.driver.get(ACTIONS_PAGE_URL)

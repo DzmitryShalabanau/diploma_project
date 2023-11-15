@@ -1,17 +1,14 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOption
-from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as FirefoxOption
 from selenium.webdriver.edge.options import Options as EdgeOption
-from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
-from selenium.webdriver.support import expected_conditions as EC
 
 from data import TEST_USER
 from pages import LoginPage, PersonalCabinetPage
@@ -71,6 +68,12 @@ def driver(request):
 
     yield driver
     driver.quit()
+
+
+@pytest.fixture(scope='function')
+def open_main_page(request):
+    login = LoginPage(request.node.funcargs['driver'])
+    login.open()
 
 
 @pytest.fixture(autouse=False)
