@@ -17,7 +17,7 @@ def test_login(driver):
     login.assert_login_success()
 
 
-@allure.title('Logout from personal cabinet')
+@allure.title('Logout as user')
 @allure.feature('Logout as TEST_USER from personal cabinet of 5element')
 def test_logout(driver):
     login = LoginPage(driver)
