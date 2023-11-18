@@ -19,7 +19,7 @@ def pytest_addoption(parser):
     Adds such options as headless mode of browser and choosing browser type
     """
     parser.addoption('--headless',
-                     default='True',
+                     default='False',
                      help='headless options: "yes" or "no"')
     parser.addoption('--b',
                      default='chrome',
